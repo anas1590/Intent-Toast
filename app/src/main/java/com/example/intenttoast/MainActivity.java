@@ -2,7 +2,10 @@ package com.example.intenttoast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,4 +14,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+    public void callNumber(View view) {
+        Uri uri = Uri.parse("tel:+923001234567");
+        Intent intent = new Intent(Intent.ACTION_DIAL, uri);
+        startActivity(intent);
+    }
+
+    public void sendEmail(View view) {
+        Intent intent = new Intent();
+        intent.setType("text/plain");
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"aa@pucit.edu.pk", "bb@pucit.edu.pk"});
+        intent.putExtra(Intent.EXTRA_SUBJECT, "subject");
+        intent.putExtra(Intent.EXTRA_TEXT, "message");
+        startActivity(intent);
+    }
+
+    public void openWebsite(View view) {
+        String url = "https://github.com/anas1590/";
+        Uri webpage = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        startActivity(intent);
+    }
+
 }
