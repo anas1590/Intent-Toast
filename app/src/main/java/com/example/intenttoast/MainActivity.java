@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,6 +44,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void showToast(View view) {
         Toast toast = Toast.makeText(this, "Hello! I'm Toast", Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    public void showCustomizedToast(View view) {
+        setContentView(R.layout.toast_layout);
+        view = LayoutInflater.from(MainActivity.this).inflate(R.layout.toast_layout, null);
+        Toast toast = new Toast(MainActivity.this);
+        TextView tvMessage = view.findViewById(R.id.textView3);
+        tvMessage.setText("Toast is Showing");
+        toast.setView(view);
         toast.show();
     }
 
