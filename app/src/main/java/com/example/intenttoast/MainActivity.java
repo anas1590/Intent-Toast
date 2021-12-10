@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         TextView tvMessage = view.findViewById(R.id.textView3);
         tvMessage.setText("Toast is Showing");
         toast.setView(view);
+        toast.setGravity(Gravity.LEFT,100,200);
         toast.show();
     }
 
